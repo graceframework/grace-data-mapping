@@ -25,7 +25,7 @@ class InstanceMethodInvokingClosure extends MethodInvokingClosure {
 
     InstanceMethodInvokingClosure(apiDelegate, Class<?> persistentClass, String methodName, Class[] parameterTypes) {
         super(apiDelegate, methodName, parameterTypes)
-        Class[] metaMethodParams = ([persistentClass] + (parameterTypes as List)) as Class[]
+        Class[] metaMethodParams = ([persistentClass] + (parameterTypes as List<Class>)) as Class[]
         super.metaMethod = pickMetaMethod(apiDelegate.getMetaClass(), methodName, metaMethodParams, false)
     }
 
