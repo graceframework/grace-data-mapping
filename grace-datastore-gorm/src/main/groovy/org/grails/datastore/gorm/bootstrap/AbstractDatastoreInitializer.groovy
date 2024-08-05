@@ -222,7 +222,6 @@ abstract class AbstractDatastoreInitializer implements ResourceLoaderAware {
      */
     @CompileStatic
     void configureForBeanDefinitionRegistry(BeanDefinitionRegistry beanDefinitionRegistry) {
-        def now = System.currentTimeMillis()
 
         if (configuration instanceof ConfigurableEnvironment && beanDefinitionRegistry instanceof ConfigurableApplicationContext) {
             def env = (ConfigurableEnvironment) configuration
@@ -235,8 +234,6 @@ abstract class AbstractDatastoreInitializer implements ResourceLoaderAware {
         }
 
         scanForPersistentClasses()
-        def sfpTime = System.currentTimeMillis()
-        println "AbstractDatastoreInitializer(1) -> scanForPersistentClasses: ${sfpTime - now}ms"
 
         if (GroovyBeanReaderInit.isAvailable()) {
             GroovyBeanReaderInit.registerBeans(beanDefinitionRegistry, getBeanDefinitions(beanDefinitionRegistry))
@@ -247,7 +244,6 @@ abstract class AbstractDatastoreInitializer implements ResourceLoaderAware {
         else {
             throw new IllegalStateException("Neither Spring 4.0+ nor grails-spring dependency found on classpath to enable GORM configuration. If you are using an earlier version of Spring please add the grails-spring dependency to your classpath.")
         }
-        println "AbstractDatastoreInitializer(2) -> registerBeans: ${System.currentTimeMillis() - sfpTime}ms"
     }
 
     @CompileDynamic
@@ -312,7 +308,6 @@ abstract class AbstractDatastoreInitializer implements ResourceLoaderAware {
 
     @CompileDynamic
     protected Map<String, Class<?>> loadDataServices(String secondaryDatastore = null) {
-        // def now = System.currentTimeMillis()
         Map<String, Class<?>> services = [:]
         final SoftServiceLoader<Service> softServiceLoader = SoftServiceLoader.load(Service)
         for (ServiceDefinition<Service> serviceDefinition : softServiceLoader) {
@@ -332,7 +327,6 @@ abstract class AbstractDatastoreInitializer implements ResourceLoaderAware {
                 }
             }
         }
-        // println "AbstractDatastoreInitializer -> loadDataServices: ${System.currentTimeMillis()-now}ms"
         return services
     }
 
