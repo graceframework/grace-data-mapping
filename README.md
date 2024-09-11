@@ -3,9 +3,23 @@
 [![Latest version on Maven Central](https://img.shields.io/maven-central/v/org.graceframework/grace-datastore-core.svg?label=Maven%20Central&logo=apache-maven&style=flat)](https://search.maven.org/search?q=g:org.graceframework)
 [![Grace on X](https://img.shields.io/twitter/follow/graceframework?style=social)](https://twitter.com/graceframework)
 
+[![Groovy Version](https://img.shields.io/badge/Groovy-4.0.22-blue?style=flat&color=4298b8)](https://groovy-lang.org/releasenotes/groovy-4.0.html)
+[![Grace Version](https://img.shields.io/badge/Grace-2023.0.0-blue?style=flat&color=f49b06)](https://github.com/graceframework/grace-framework/releases/tag/v2023.0.0)
+
 # Grace Data
 
-[Grace](https://github.com/graceframework/grace-framework) is a framework used to build web applications with the [Groovy](https://groovy-lang.org/) programming language. This project provides the plumbings for the GORM API both for Hibernate and for new implementations of GORM on top of NoSQL datastores.
+Grace Data(GORM) is the data access toolkit used by Grace and provides a rich set of APIs for accessing relational and non-relational data including implementations for Hibernate (SQL), MongoDB, Neo4j, Cassandra, an in-memory ConcurrentHashMap for testing and an automatic GraphQL schema generator.
+
+## Versions
+
+To make it easier for users to use and upgrade, Grace Data adopts a version policy consistent with the [Grace Framework](https://github.com/graceframework/grace-framework).
+
+| GORM Version | Grace Version |
+|--------------|---------------|
+| 2023.0.x     | 2023.0.x      |
+| 2022.2.x     | 2022.2.x      |
+| 2022.1.x     | 2022.1.x      |
+| 2022.0.x     | 2022.0.x      |
 
 ## License
 
