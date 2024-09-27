@@ -15,10 +15,9 @@
 package org.grails.datastore.mapping.keyvalue.mapping.config
 
 import groovy.transform.CompileStatic
-import groovy.transform.builder.Builder
-import groovy.transform.builder.SimpleStrategy
 
 import org.grails.datastore.mapping.config.Entity
+import org.grails.datastore.mapping.config.SettingsBuilder
 
 /**
  * <p>A Family is a grouping of KeyValue pairs and is typically composed
@@ -33,7 +32,7 @@ import org.grails.datastore.mapping.config.Entity
  * @since 1.0
  */
 @CompileStatic
-@Builder(builderStrategy = SimpleStrategy, prefix = '')
+@SettingsBuilder
 class Family extends Entity<KeyValue> {
 
     String keyspace

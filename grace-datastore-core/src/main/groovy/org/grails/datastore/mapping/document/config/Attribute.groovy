@@ -15,10 +15,9 @@
 package org.grails.datastore.mapping.document.config
 
 import groovy.transform.CompileStatic
-import groovy.transform.builder.Builder
-import groovy.transform.builder.SimpleStrategy
 
 import org.grails.datastore.mapping.config.Property
+import org.grails.datastore.mapping.config.SettingsBuilder
 
 /**
  * Configures how a Java property maps to a Document attribute
@@ -26,7 +25,7 @@ import org.grails.datastore.mapping.config.Property
  * @author Graeme Rocher
  */
 @CompileStatic
-@Builder(builderStrategy = SimpleStrategy, prefix = '')
+@SettingsBuilder
 class Attribute extends Property {
 
     void setAttr(String name) {

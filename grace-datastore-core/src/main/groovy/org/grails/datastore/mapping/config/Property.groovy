@@ -21,8 +21,6 @@ import jakarta.persistence.FetchType
 
 import groovy.transform.CompileDynamic
 import groovy.transform.CompileStatic
-import groovy.transform.builder.Builder
-import groovy.transform.builder.SimpleStrategy
 import org.springframework.beans.MutablePropertyValues
 import org.springframework.validation.DataBinder
 
@@ -33,7 +31,7 @@ import org.springframework.validation.DataBinder
  * @since 1.0
  */
 @CompileStatic
-@Builder(builderStrategy = SimpleStrategy, prefix = '')
+@SettingsBuilder
 class Property implements Cloneable {
 
     /**

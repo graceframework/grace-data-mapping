@@ -1,16 +1,15 @@
 package org.grails.datastore.mapping.multitenancy
 
-import groovy.transform.builder.Builder
-import groovy.transform.builder.SimpleStrategy
 import org.springframework.beans.BeanUtils
 
+import org.grails.datastore.mapping.config.SettingsBuilder
 import org.grails.datastore.mapping.core.connections.ConnectionSource
 import org.grails.datastore.mapping.multitenancy.resolvers.NoTenantResolver
 
 /**
  * Represents the multi tenancy settings
  */
-@Builder(builderStrategy = SimpleStrategy, prefix = '')
+@SettingsBuilder
 class MultiTenancySettings {
 
     TenantResolver tenantResolver

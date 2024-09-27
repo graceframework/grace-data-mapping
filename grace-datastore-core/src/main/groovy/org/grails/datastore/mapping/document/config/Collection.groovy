@@ -15,10 +15,9 @@
 package org.grails.datastore.mapping.document.config
 
 import groovy.transform.CompileStatic
-import groovy.transform.builder.Builder
-import groovy.transform.builder.SimpleStrategy
 
 import org.grails.datastore.mapping.config.Entity
+import org.grails.datastore.mapping.config.SettingsBuilder
 
 /**
  * Configures how an entity is mapped onto a Document collection
@@ -26,7 +25,7 @@ import org.grails.datastore.mapping.config.Entity
  * @author Graeme Rocher
  */
 @CompileStatic
-@Builder(builderStrategy = SimpleStrategy, prefix = '')
+@SettingsBuilder
 class Collection extends Entity<Attribute> {
 
     /**

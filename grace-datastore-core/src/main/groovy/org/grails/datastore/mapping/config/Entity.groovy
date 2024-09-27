@@ -16,8 +16,6 @@ package org.grails.datastore.mapping.config
 
 import groovy.transform.CompileDynamic
 import groovy.transform.CompileStatic
-import groovy.transform.builder.Builder
-import groovy.transform.builder.SimpleStrategy
 
 import org.grails.datastore.mapping.core.connections.ConnectionSource
 import org.grails.datastore.mapping.model.config.GormProperties
@@ -29,7 +27,7 @@ import org.grails.datastore.mapping.model.config.GormProperties
  * @since 1.1.9
  */
 @CompileStatic
-@Builder(builderStrategy = SimpleStrategy, prefix = '')
+@SettingsBuilder
 class Entity<P extends Property> {
 
     /**
