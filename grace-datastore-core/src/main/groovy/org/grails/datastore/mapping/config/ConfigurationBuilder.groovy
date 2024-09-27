@@ -1,10 +1,11 @@
-/* Copyright 2016 the original author or authors.
+/*
+ * Copyright 2016-2024 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- *      http://www.apache.org/licenses/LICENSE-2.0
+ *      https://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -16,8 +17,6 @@ package org.grails.datastore.mapping.config
 
 import groovy.transform.CompileDynamic
 import groovy.transform.CompileStatic
-import groovy.transform.builder.Builder
-import groovy.transform.builder.SimpleStrategy
 import groovy.util.logging.Slf4j
 import org.springframework.core.convert.ConversionFailedException
 import org.springframework.core.env.PropertyResolver
@@ -36,6 +35,7 @@ import org.grails.datastore.mapping.reflect.NameUtils
  * @param <C> The finalized configuration constructions from the builder (examples are MongoClientSettings or Neo4j Bolt's Config)
  *
  * @author Graeme Rocher
+ * @author Michael Yan
  */
 @CompileStatic
 @Slf4j
@@ -163,7 +163,7 @@ abstract class ConfigurationBuilder<B, C> {
                 }
                 else if (!hasBuilderPrefix &&
                         ((org.grails.datastore.mapping.reflect.ReflectionUtils.isGetter(methodName, parameterTypes) &&
-                                method.returnType.getAnnotation(Builder) == null) ||
+                                method.returnType.getAnnotation(ConfigurationSettings) == null) ||
                                 org.grails.datastore.mapping.reflect.ReflectionUtils.isSetter(methodName, parameterTypes))) {
                     // don't process getters or setters, unless the getter returns a builder
                     continue
@@ -216,7 +216,7 @@ abstract class ConfigurationBuilder<B, C> {
                         continue
                     }
 
-                    def buildMethod = ReflectionUtils.findMethod(argType, 'build')
+                    Method buildMethod = ReflectionUtils.findMethod(argType, 'build')
                     if (buildMethod != null) {
                         Method existingGetter = ReflectionUtils.findMethod(builderClass, NameUtils.getGetterName(methodName))
                         def newBuilder
@@ -239,8 +239,8 @@ abstract class ConfigurationBuilder<B, C> {
                         }
                     }
 
-                    Builder builderAnnotation = argType.getAnnotation(Builder)
-                    if (builderAnnotation != null && builderAnnotation.builderStrategy() == SimpleStrategy) {
+                    ConfigurationSettings builderAnnotation = argType.getAnnotation(ConfigurationSettings)
+                    if (builderAnnotation != null) {
                         Method existingGetter = ReflectionUtils.findMethod(builderClass, NameUtils.getGetterName(methodName))
                         def newBuilder
                         if (existingGetter != null) {
@@ -300,7 +300,7 @@ abstract class ConfigurationBuilder<B, C> {
                     }
                 }
                 else if (methodName.startsWith("get") && parameterTypes.length == 0) {
-                    if (method.returnType.getAnnotation(Builder)) {
+                    if (method.returnType.getAnnotation(ConfigurationSettings)) {
                         def childBuilder = method.invoke(builder)
                         if (childBuilder != null) {
                             Object fallBackChildConfig = null
