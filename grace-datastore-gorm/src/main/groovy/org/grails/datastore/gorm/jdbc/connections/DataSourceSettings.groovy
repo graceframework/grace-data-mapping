@@ -35,9 +35,9 @@ import org.grails.datastore.mapping.core.connections.ConnectionSourceSettings
 class DataSourceSettings extends ConnectionSourceSettings {
 
     /**
-     * The data source URL, defaults to an H2 in-memory database
+     * The data source URL
      */
-    String url = "jdbc:h2:mem:grailsDB;LOCK_TIMEOUT=10000"
+    String url
 
     /**
      * The driver class name
