@@ -10,9 +10,5 @@ include ("grace-datastore-core",
         'grace-datastore-gorm-validation',
         'grace-datastore-gorm-support',
         'grace-datastore-gorm-tck',
-        'grace-datastore-gorm-test',
-
-
-        // RX projects
-        'grace-datastore-gorm-rx'
+        'grace-datastore-gorm-test'
 )

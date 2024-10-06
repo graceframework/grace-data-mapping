@@ -3,7 +3,6 @@ dependencies {
             project(":grace-datastore-core")
 
     implementation "com.github.ben-manes.caffeine:caffeine:$caffeineVersion"
-    testImplementation project(":grace-datastore-gorm-rx")
     testImplementation project(":grace-datastore-gorm-tck")
     testImplementation "org.apache.groovy:groovy-json:$groovyVersion"
     testRuntimeOnly "org.springframework:spring-aop:$springVersion"
