@@ -10,6 +10,11 @@
 
 Grace Data(GORM) is the data access toolkit used by Grace and provides a rich set of APIs for accessing relational and non-relational data including implementations for Hibernate (SQL), MongoDB, Neo4j, Cassandra, an in-memory ConcurrentHashMap for testing and an automatic GraphQL schema generator.
 
+> [!IMPORTANT]
+> Currently, there is only one implementation for GORM - [Grace Data Hibernate](https://github.com/graceframework/grace-data-hibernate), as it takes a lot of time to refactor GORM and support the latest Hibernate 6.
+> At the same time, Grace Framework is actively supporting other frameworks such as Spring Data, JOOQ, myBatis, etc.
+
+
 ## Versions
 
 To make it easier for users to use and upgrade, Grace Data adopts a version policy consistent with the [Grace Framework](https://github.com/graceframework/grace-framework).
