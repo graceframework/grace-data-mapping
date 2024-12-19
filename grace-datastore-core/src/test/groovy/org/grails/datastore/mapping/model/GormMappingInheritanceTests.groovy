@@ -1,7 +1,5 @@
 package org.grails.datastore.mapping.model
 
-import org.junit.jupiter.api.Disabled
-
 import grails.gorm.annotation.Entity
 import org.grails.datastore.mapping.model.types.*
 import org.junit.jupiter.api.Test
@@ -11,7 +9,6 @@ import static org.junit.jupiter.api.Assertions.*
 /**
  * Tests for correct mapping of entities with inheritance.
  */
-@Disabled("https://issues.apache.org/jira/browse/GROOVY-5106")
 class GormMappingInheritanceTests {
 
     @Test
@@ -104,14 +101,14 @@ class GormMappingInheritanceTests {
     }
 }
 
-//@Entity
+@Entity
 class DerivedEntity extends SecondEntity {
     String baz
 
     static transients = ['baz']
 }
 
-//@Entity
+@Entity
 class SpecialUser extends User {
     Set specialFriends
 
@@ -129,7 +126,7 @@ class Parent {
     static hasMany = [children: BaseChild]
 }
 
-//@Entity
+@Entity
 class BaseChild {
     Long id
 
@@ -143,7 +140,7 @@ class DerivedChild extends BaseChild {
     String prop
 }
 
-//@Entity
+@Entity
 class EmbeddedTest {
     Long id
 
@@ -158,7 +155,7 @@ class DerivedEmbeddedTest extends EmbeddedTest {
     static embedded = ['testEntity2']
 }
 
-//@Entity
+@Entity
 class MappingTest {
     Long id
 
@@ -169,7 +166,7 @@ class MappingTest {
     }
 }
 
-//@Entity
+@Entity
 class MappingTest2 extends MappingTest {
 
     String toIndex2

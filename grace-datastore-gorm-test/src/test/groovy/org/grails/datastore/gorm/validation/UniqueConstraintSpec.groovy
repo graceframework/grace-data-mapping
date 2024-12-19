@@ -14,7 +14,6 @@ import spock.lang.AutoCleanup
 import spock.lang.Specification
 
 @Transactional
-@Ignore("https://issues.apache.org/jira/browse/GROOVY-5106")
 class UniqueConstraintSpec extends Specification {
 
     @AutoCleanup SimpleMapDatastore datastore = new SimpleMapDatastore(
@@ -145,7 +144,7 @@ class UniqueConstraintSpec extends Specification {
 }
 
 
-//@Entity
+@Entity
 class Channel {
 
     String name
@@ -177,7 +176,7 @@ class ListChannel extends Channel {
 }
 
 
-//@Entity
+@Entity
 class OtherListChannel extends ListChannel {
 
     static constraints = {

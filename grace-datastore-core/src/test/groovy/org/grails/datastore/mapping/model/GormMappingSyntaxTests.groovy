@@ -203,7 +203,7 @@ class TestEntity {
     static transients = ['bar']
 }
 
-//@Entity
+@Entity
 class SecondEntity {
     Long id
     String name
