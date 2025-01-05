@@ -3,7 +3,9 @@ buildscript {
         mavenCentral()
         gradlePluginPortal()
         if (project.projectVersion.endsWith('-SNAPSHOT')) {
-            maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
+            maven {
+                url = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+            }
         }
     }
     dependencies {
@@ -29,7 +31,9 @@ allprojects {
     repositories {
         mavenCentral()
         if (project.projectVersion.endsWith('-SNAPSHOT')) {
-            maven { url "https://s01.oss.sonatype.org/content/repositories/snapshots/" }
+            maven {
+                url = "https://s01.oss.sonatype.org/content/repositories/snapshots/"
+            }
         }
     }
 }
@@ -175,7 +179,7 @@ subprojects {
 
     afterEvaluate {
         signing {
-            required { isReleaseVersion && gradle.taskGraph.hasTask("publish") }
+            required = isReleaseVersion && gradle.taskGraph.hasTask("publish")
             sign publishing.publications.maven
         }
     }
